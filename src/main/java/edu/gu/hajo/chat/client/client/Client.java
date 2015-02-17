@@ -48,24 +48,22 @@ public class Client implements ILocalClient, IChatClient, IPeer,
     */
     // -Callad From MainFrames Connect Button
     @Override
-	public void connectGui() throws RemoteException, NotBoundException {
-    	
+	public void connect() {
 		me = new User(login, passwd,n,o);
-		me = login();
     	observer.onEvent(Event.CONNECTED, me);
     	observer.onEvent(Event.USER_JOINED, login);
+    	publishSwing(Event.CONNECTED, this);
     }
     // -Called From MainFrames Disconnect Button
     @Override
-    public void disconnectGui(){
-    	observer.onEvent(Event.DISCONNECTED, me);
-    	observer.onEvent(Event.USER_LEFT, login);
+    public void disconnect(){
+ 
     }
 	
     // -Called From Mainframes Send Button
     @Override
-	public void sendGui(String data){
-    	// skickar meddelande till servern så lägger de ut den till användarna.
+	public void broadcast(String msg){
+    
 	}
     
     // -------- IPeer --------------------
@@ -91,18 +89,11 @@ public class Client implements ILocalClient, IChatClient, IPeer,
     }
     // IChatClient -----------------------------------------------
     /*
-    * Frågor:
-    * 
-    * 
-    * 
+     * 
+     *  
     */
-    public User login() throws RemoteException, NotBoundException{
-    	Registry reg =  LocateRegistry.getRegistry(
-                ChatClientOptions.getConnection().getRegistryIp(),
-                ChatClientOptions.getConnection().getRegistryPort());
-    	server = (IChatServer) reg.lookup(Constants.SERVER_NAME);
-    	UnicastRemoteObject.exportObject(this,ChatClientOptions.getConnection().getMyPort());
-    	return me;
+    public User login(){
+		return me;
     }
     // -------------------------------------------------------------------
     

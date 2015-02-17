@@ -12,10 +12,10 @@ import java.rmi.RemoteException;
 public interface ILocalClient {
  
 	
-	public void connectGui() throws RemoteException, NotBoundException;
+	public void connect();
 	
-	public void disconnectGui();
+	public void disconnect();
 	
-	public void sendGui(String data);
+	public void broadcast(String msg);
 	
 }
