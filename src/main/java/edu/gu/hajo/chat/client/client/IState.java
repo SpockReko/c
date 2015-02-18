@@ -1,7 +1,9 @@
 package edu.gu.hajo.chat.client.client;
 
-import java.lang.Thread.State;
+
 import java.rmi.RemoteException;
+
+import edu.gu.hajo.chat.client.client.StateContext.State;
 import edu.gu.hajo.chat.server.spec.IChatClient;
 import edu.gu.hajo.chat.server.spec.IMessage;
 import edu.gu.hajo.chat.server.spec.IPeer;
@@ -15,10 +17,13 @@ import edu.gu.hajo.chat.server.spec.IPeer;
  *
  */
 public interface IState {
+	
+	 
     public void connectToServer(IChatClient client) throws RemoteException;
     public void disconnectFromServer(IChatClient client) throws RemoteException;
-    public State getState();
-    public void send(IMessage msg)throws RemoteException;
-    public IPeer lookUp(String username) throws RemoteException;
+    public void broadcast(IMessage msg)throws RemoteException;
+    public IPeer searchFor(String username) throws RemoteException;
     
+    public State getState();
+
 }

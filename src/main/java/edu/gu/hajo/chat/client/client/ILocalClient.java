@@ -13,8 +13,8 @@ public interface ILocalClient {
 	
     public void connectToServer();
     public void disconnectFromServer();
-    public void send(String msg);
-    public void lookUp(String username);
+    public void broadcast(String msg);
+    public void searchFor(String username);
     public List<String> getdownloadableFiles();
     public void downloadFile(String filename);
 

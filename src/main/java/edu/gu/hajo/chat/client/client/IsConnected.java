@@ -1,65 +1,43 @@
 package edu.gu.hajo.chat.client.client;
 
-import java.lang.Thread.State;
+import edu.gu.hajo.chat.client.client.StateContext.State;
 import java.rmi.RemoteException;
-
 import edu.gu.hajo.chat.server.spec.IChatClient;
 import edu.gu.hajo.chat.server.spec.IMessage;
 import edu.gu.hajo.chat.server.spec.IPeer;
 
-/**
- * Handles the states and transitions between them
- *
- * @author hajo
- *
- */
+public class IsConnected implements IState {
 
-
-// 
-final class StateContext implements IState{
-
-	private IState state;
-
-	public enum State{
-		Connected,
-		Disconnected;
-	}
 	
-	public StateContext(IState state) {
-		this.state = state;
-	}
+	private final State state = State.Disconnected;
 	
-	public void setState(IState state) {
-		this.state = state;
-	}
-
 	@Override
 	public void connectToServer(IChatClient client) throws RemoteException {
-		// TODO
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void disconnectFromServer(IChatClient client) throws RemoteException {
-		// TODO 
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public State getState() {
-		// TODO
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void broadcast(IMessage msg) throws RemoteException {
-		// TODO 
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public IPeer searchFor(String username) throws RemoteException {
-		// TODO 
+		// TODO Auto-generated method stub
 		return null;
 	}
 
