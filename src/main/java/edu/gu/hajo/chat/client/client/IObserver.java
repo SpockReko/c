@@ -13,6 +13,7 @@ public interface IObserver {
         MESSAGE,
         USER_LEFT,
         USER_JOINED,
+//		INI_USER_LIST,
         EXCEPTION,
     }
 

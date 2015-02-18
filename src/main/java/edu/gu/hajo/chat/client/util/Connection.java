@@ -18,15 +18,15 @@ public final class Connection {
         this.myPort = myPort;
     }
 
-    public int getMyPort() {
-        return myPort;
-    }
-
     public String getRegistryIp() {
-        return registryIp;
+    	return registryIp;
     }
 
     public int getRegistryPort() {
-        return registryPort;
+    	return registryPort;
+    }
+
+    public int getMyPort() {
+    	return myPort;
     }
 }

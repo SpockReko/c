@@ -1,7 +1,6 @@
 package edu.gu.hajo.chat.client.client;
 
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+import java.util.List;
 
 
 /**
@@ -12,10 +11,11 @@ import java.rmi.RemoteException;
 public interface ILocalClient {
  
 	
-	public void connect();
-	
-	public void disconnect();
-	
-	public void broadcast(String msg);
-	
+    public void connectToServer();
+    public void disconnectFromServer();
+    public void send(String msg);
+    public void lookUp(String username);
+    public List<String> getdownloadableFiles();
+    public void downloadFile(String filename);
+
 }

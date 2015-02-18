@@ -62,20 +62,15 @@ public class MainFrame extends JFrame implements ActionListener, IObserver {
         switch (e.getActionCommand()) {
             case SEND_CMD:
                 String msg = send.getText();
-                client.sendGui(msg);
+//                client.broadcast(msg);
                 send.setText("");
                 break;
             case CONNECT_CMD:
                 client = new Client(this);
-			try {
-				client.connectGui();
-			} catch (RemoteException | NotBoundException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+//				client.connect();
                 break;
             case DISCONNECT_CMD:
-                client.disconnectGui();
+//                client.disconnect();
                 break;
             default:;
         }

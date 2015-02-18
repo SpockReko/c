@@ -22,6 +22,7 @@ public class ChatClientOptions {
     private static String login = "qqq";
     private static String passwd = "111";
 
+    // connection set and get
     public static void setConnection(Connection connection) {
         ChatClientOptions.connection = connection;
     }
@@ -30,35 +31,40 @@ public class ChatClientOptions {
         return connection;
     }
 
+    // uploadPath set and get
+    public static void setUploadPath(Path uploadDir) {
+    	ChatClientOptions.uploadDir = uploadDir;
+    }
+
+    public static Path getUploadPath() {
+    	return uploadDir;
+    }
+    
+    // downloadPath set and get
+    public static void setDownloadPath(Path downloadDir) {
+    	ChatClientOptions.downloadDir = downloadDir;
+    }
+
+    public static Path getDownloadPath() {
+    	return downloadDir;
+    }
+
+    // login set and get
+    public static void setLogin(String login) {
+    	ChatClientOptions.login = login;
+    }
+    
+    public static String getLogin() {
+    	return login;
+    }
+    
+    // Password set and get
     public static void setPasswd(String passwd) {
         ChatClientOptions.passwd = passwd;
-    }
-
-    public static void setLogin(String login) {
-        ChatClientOptions.login = login;
-    }
-
-    public static String getLogin() {
-        return login;
     }
 
     public static String getPasswd() {
         return passwd;
     }
-
-    public static Path getUploadPath() {
-        return uploadDir;
-    }
-
-    public static Path getDownloadPath() {
-        return downloadDir;
-    }
-
-    public static void setUploadPath(Path uploadDir) {
-        ChatClientOptions.uploadDir = uploadDir;
-    }
-
-    public static void setDownloadPath(Path downloadDir) {
-        ChatClientOptions.downloadDir = downloadDir;
-    }
+    
 }

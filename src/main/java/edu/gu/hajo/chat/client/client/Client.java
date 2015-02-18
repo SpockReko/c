@@ -16,6 +16,11 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.HashSet;
+import java.util.List;
+import java.util.TimerTask;
+
+import javax.swing.SwingWorker;
 
 /**
  * Implementation of many interfaces. Serializable important!
@@ -33,78 +38,110 @@ public class Client implements ILocalClient, IChatClient, IPeer,
     private final String passwd = ChatClientOptions.getPasswd();
     private final IObserver observer;
     
-    MessageBox n = new MessageBox();
-	MessageBox o = new MessageBox();
-
 	static IChatServer server;
 	
     public Client(IObserver observer) {
         this.observer = observer;
+        Registry registry;
+		try { //print and paste from TestServer class
+			registry = LocateRegistry.getRegistry(
+			ChatClientOptions.getConnection().getRegistryIp(),
+			ChatClientOptions.getConnection().getRegistryPort());
+			server = (IChatServer) registry.lookup(Constants.SERVER_NAME);
+		    UnicastRemoteObject.exportObject(this,ChatClientOptions.getConnection().getMyPort());
+		} catch (RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
-    /*
+    
     // ILocalClient ------------------------------------------
-    * "The Client seen from the GUI."
-    * "Implemented by Client used by GUI"
-    */
-    // -Callad From MainFrames Connect Button
-    @Override
-	public void connect() {
-		me = new User(login, passwd,n,o);
-    	observer.onEvent(Event.CONNECTED, me);
-    	observer.onEvent(Event.USER_JOINED, login);
-    	publishSwing(Event.CONNECTED, this);
+    public void connectToServer(){ 
+    	//TODO
     }
-    // -Called From MainFrames Disconnect Button
-    @Override
-    public void disconnect(){
- 
+    
+    public void disconnectFromServer(){
+    	//TODO
     }
-	
-    // -Called From Mainframes Send Button
-    @Override
-	public void broadcast(String msg){
-    
-	}
-    
+    public void send(String msg){
+    	//TODO
+    }
+    public void lookUp(String username){
+    	//TODO
+    }
+    public List<String> getdownloadableFiles(){
+    	//TODO
+    	return null;
+    }
+    public void downloadFile(String filename){
+    	//TODO
+    }
     // -------- IPeer --------------------
-    /*
-    * Frågor:
-    * Vad vet vi om IPeer nu?
-    * Interfaces finns på server klassen.
-    * One clients view of another (peer2peer)
-    * Vad har IPeer för syfte?
-    * En annan klient ska kunna integrera med en annan specifik klient.
-    * Möjliga metoder:
-    */
-    // - Called From PeerDialogs Download Button
-    @Override
-    public void Download(){
-    	
-    }
-	
-    // - Called From PeerDialogs Cancel Button
-    @Override
-	public void cancel(){
-    	
-    }
-    // IChatClient -----------------------------------------------
-    /*
-     * 
-     *  
-    */
-    public User login(){
-		return me;
-    }
+    public List<String> getUploads() throws RemoteException{
+    	//TODO
+    	return null;
+    	}
+	public byte [] uploadFile(String filename) throws RemoteException{
+		//TODO
+		return null;
+		}
+	// IChatClient -----------------------------------------------
+	public String getPassword() throws RemoteException{
+		// TODO
+		return null;
+		}
+    public String getLogin() throws RemoteException{
+		// TODO
+		return null;}
+    public User getUser() throws RemoteException{
+		// TODO
+		return null;}
+    public void setUser(User user) throws RemoteException{
+		// TODO
+		}
+    public void userLoggedIn(String user)throws RemoteException{
+		// TODO
+		}
+    public void userloggedOut(String user)throws RemoteException{
+		// TODO
+		}
+    public void iniChat(HashSet<User> users) throws RemoteException{
+		// TODO
+		}
+    public void publish(IMessage msg) throws RemoteException{
+		// TODO
+		}
+    public void ping() throws RemoteException{
+		// TODO
+		}
     // -------------------------------------------------------------------
     
     // Handle over to Swing thread (from RMI thread)
     
     private void publishSwing(final IObserver.Event event, final Object data) {
-       
+      if(observer!=null){
+    	  observer.onEvent(event, data);
+      }
     }
 
-	
-		
-	
+    private class Task extends TimerTask{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+		}
+    	//TODO
+    }
+
+    private class Downloader extends SwingWorker<byte [],String>{
+
+		@Override
+		protected byte[] doInBackground() throws Exception {
+			// TODO Auto-generated method stub
+			return null;
+		}
+    	//TODO
+    }
 
 }
